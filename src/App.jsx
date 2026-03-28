@@ -6,21 +6,24 @@ import Services from './components/Services';
 import TrackRecord from './components/TrackRecord';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import { LanguageProvider } from './context/LanguageContext';
 import './App.css';
 
 function App() {
   return (
-    <div className="app-container">
-      <Header />
-      <main>
-        <Hero />
-        <OurEdge />
-        <Services />
-        <TrackRecord />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="app-container">
+        <Header />
+        <main>
+          <Hero />
+          <OurEdge />
+          <Services />
+          <TrackRecord />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 

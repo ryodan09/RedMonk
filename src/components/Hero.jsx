@@ -1,8 +1,11 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import './Hero.css';
 
 const Hero = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="hero">
       <div className="hero-background">
@@ -14,25 +17,24 @@ const Hero = () => {
         <div className="hero-content">
           <div className="hero-badge animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <ShieldCheck size={18} />
-            <span>Enterprise Grade IT Solutions</span>
+            <span>{t('hero', 'badge')}</span>
           </div>
           
           <h1 className="hero-title animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Elite IT Infrastructure & <br />
-            <span className="text-primary">Security-First Solutions</span>
+            {t('hero', 'title1')} <br />
+            <span className="text-primary">{t('hero', 'title2')}</span>
           </h1>
           
           <p className="hero-subtitle animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            Bridging enterprise experience from Berca, Mastersystem, and MyRepublic 
-            to your business growth. We build resilient, high-performance IT environments.
+            {t('hero', 'subtitle')}
           </p>
           
           <div className="hero-actions animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <a href="#contact" className="btn btn-primary hero-btn">
-              Consult Now <ArrowRight size={18} className="ml-2" />
+              {t('hero', 'btnConsult')} <ArrowRight size={18} className="ml-2" />
             </a>
             <a href="#services" className="btn hero-btn-outline">
-              Explore Services
+              {t('hero', 'btnExplore')}
             </a>
           </div>
         </div>

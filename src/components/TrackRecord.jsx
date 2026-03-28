@@ -1,8 +1,11 @@
 import React from 'react';
 import { Briefcase, Award } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import './TrackRecord.css';
 
 const TrackRecord = () => {
+  const { t } = useLanguage();
+
   const experiences = [
     {
       company: "Berca Hardayaperkasa",
@@ -29,20 +32,20 @@ const TrackRecord = () => {
       <div className="container">
         <div className="track-layout">
           <div className="track-header">
-            <h2 className="section-title" style={{textAlign: 'left'}}>Founder's Track Record</h2>
+            <h2 className="section-title" style={{textAlign: 'left'}}>{t('track', 'title')}</h2>
             <p className="track-intro">
-              Red Monk is built upon a decade of rigorous engineering and solution architecture inside Indonesia’s largest System Integrators (SIs) and Internet Service Providers (ISPs).
+              {t('track', 'intro')}
             </p>
             <div className="track-stats">
               <div className="stat-item">
                 <Briefcase className="stat-icon" size={24} />
                 <span className="stat-number">10+</span>
-                <span className="stat-label">Years Experience</span>
+                <span className="stat-label">{t('track', 'yearsLabel')}</span>
               </div>
               <div className="stat-item">
                 <Award className="stat-icon" size={24} />
                 <span className="stat-number">50+</span>
-                <span className="stat-label">Enterprise Projects</span>
+                <span className="stat-label">{t('track', 'projectsLabel')}</span>
               </div>
             </div>
           </div>

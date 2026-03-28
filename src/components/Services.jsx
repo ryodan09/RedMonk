@@ -1,35 +1,38 @@
 import React from 'react';
 import { Server, ShieldAlert, Cpu, Laptop } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import './Services.css';
 
 const Services = () => {
+  const { t } = useLanguage();
+
   const serviceList = [
     {
-      title: "Network & Security",
+      title: t('services', 'netTitle'),
       icon: <ShieldAlert size={32} />,
-      desc: "Comprehensive firewall, VPN, and intrustion detection setups ensuring threat-proof communication lines."
+      desc: t('services', 'netDesc')
     },
     {
-      title: "Data Center Build",
+      title: t('services', 'dcTitle'),
       icon: <Server size={32} />,
-      desc: "Robust physical and cloud infrastructure provisioning matching enterprise scalability demands."
+      desc: t('services', 'dcDesc')
     },
     {
-      title: "IT Procurement",
+      title: t('services', 'procTitle'),
       icon: <Cpu size={32} />,
-      desc: "Strategic sourcing of high-end hardware and software licenses from trusted global OEMs."
+      desc: t('services', 'procDesc')
     },
     {
-      title: "App Blueprinting",
+      title: t('services', 'appTitle'),
       icon: <Laptop size={32} />,
-      desc: "End-to-end architecture design for modern, secure, and resilient business applications."
+      desc: t('services', 'appDesc')
     }
   ];
 
   return (
     <section id="services" className="section section-dark">
       <div className="container">
-        <h2 className="section-title">Our Services</h2>
+        <h2 className="section-title">{t('services', 'title')}</h2>
         <div className="services-grid">
           {serviceList.map((service, index) => (
             <div className="service-card" key={index}>
@@ -38,7 +41,7 @@ const Services = () => {
               </div>
               <h3 className="service-title">{service.title}</h3>
               <p className="service-desc">{service.desc}</p>
-              <a href="#contact" className="service-link">Learn more &rarr;</a>
+              <a href="#contact" className="service-link">{t('services', 'learnMore')}</a>
             </div>
           ))}
         </div>

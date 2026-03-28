@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Hexagon } from 'lucide-react';
+import { Menu, X, Hexagon, Globe } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import './Header.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,9 +17,9 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Our Edge', href: '#edge' },
-    { name: 'Services', href: '#services' },
-    { name: 'Track Record', href: '#track-record' },
+    { name: t('nav', 'edge'), href: '#edge' },
+    { name: t('nav', 'services'), href: '#services' },
+    { name: t('nav', 'track'), href: '#track-record' },
   ];
 
   return (
@@ -29,6 +31,9 @@ const Header = () => {
         </a>
         
         <nav className="desktop-nav">
+          <button onClick={toggleLanguage} className="lang-toggle" title="Toggle Language">
+            <Globe size={18} /> {language.toUpperCase()}
+          </button>
           <ul className="nav-list">
             {navLinks.map((link) => (
               <li key={link.name}>
@@ -36,15 +41,20 @@ const Header = () => {
               </li>
             ))}
           </ul>
-          <a href="#contact" className="btn btn-primary nav-cta">Consult Now</a>
+          <a href="#contact" className="btn btn-primary nav-cta">{t('nav', 'consult')}</a>
         </nav>
 
-        <button 
-          className="mobile-menu-toggle"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="mobile-actions">
+          <button onClick={toggleLanguage} className="lang-toggle-mobile" title="Toggle Language">
+            {language.toUpperCase()}
+          </button>
+          <button 
+            className="mobile-menu-toggle"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {isMobileMenuOpen && (
@@ -67,7 +77,7 @@ const Header = () => {
                 className="btn btn-primary mobile-cta"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Consult Now
+                {t('nav', 'consult')}
               </a>
             </li>
           </ul>
