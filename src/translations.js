@@ -93,8 +93,8 @@ export const translations = {
       dcDesc: 'Robust physical and cloud infrastructure provisioning matching enterprise scalability demands.',
       procTitle: 'IT Procurement',
       procDesc: 'Strategic sourcing of high-end hardware and software licenses from trusted global OEMs.',
-      appTitle: 'App Blueprinting',
-      appDesc: 'End-to-end architecture design for modern, secure, and resilient business applications.',
+      appTitle: 'Application Development',
+      appDesc: 'End-to-end design and development for modern, secure, and resilient business applications.',
       learnMore: 'Learn more \u2192'
     },
     track: {
