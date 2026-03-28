@@ -14,6 +14,7 @@
   text-align: center;
   position: relative;
   top: 0;
+  height: 100%;
 }
 
 .edge-card:hover {

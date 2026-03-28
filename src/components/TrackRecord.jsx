@@ -1,6 +1,7 @@
 import React from 'react';
 import { Briefcase, Award } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import AnimatedSection from './AnimatedSection';
 import './TrackRecord.css';
 
 const TrackRecord = () => {
@@ -31,7 +32,7 @@ const TrackRecord = () => {
     <section id="track-record" className="section section-light">
       <div className="container">
         <div className="track-layout">
-          <div className="track-header">
+          <AnimatedSection className="track-header">
             <h2 className="section-title" style={{textAlign: 'left'}}>{t('track', 'title')}</h2>
             <p className="track-intro">
               {t('track', 'intro')}
@@ -48,21 +49,23 @@ const TrackRecord = () => {
                 <span className="stat-label">{t('track', 'projectsLabel')}</span>
               </div>
             </div>
-          </div>
+          </AnimatedSection>
           
           <div className="timeline">
             {experiences.map((exp, index) => (
-              <div className="timeline-item" key={index}>
-                <div className="timeline-dot"></div>
-                <div className="timeline-content">
-                  <h3 className="company-name">{exp.company}</h3>
-                  <div className="role-years">
-                    <span className="role-title">{exp.role}</span>
-                    <span className="years-badge">{exp.years}</span>
+              <AnimatedSection key={index} delay={index * 200} className="timeline-item-wrapper">
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h3 className="company-name">{exp.company}</h3>
+                    <div className="role-years">
+                      <span className="role-title">{exp.role}</span>
+                      <span className="years-badge">{exp.years}</span>
+                    </div>
+                    <p className="exp-desc">{exp.desc}</p>
                   </div>
-                  <p className="exp-desc">{exp.desc}</p>
                 </div>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>

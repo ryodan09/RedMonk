@@ -1,6 +1,7 @@
 import React from 'react';
 import { Building2, Shield, Network } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import AnimatedSection from './AnimatedSection';
 import './OurEdge.css';
 
 const OurEdge = () => {
@@ -27,17 +28,21 @@ const OurEdge = () => {
   return (
     <section id="edge" className="section section-light">
       <div className="container">
-        <h2 className="section-title">{t('edge', 'title')}</h2>
+        <AnimatedSection>
+          <h2 className="section-title">{t('edge', 'title')}</h2>
+        </AnimatedSection>
         
         <div className="edge-grid">
           {edgeItems.map((item, index) => (
-            <div className="edge-card" key={index}>
-              <div className="edge-icon-wrapper">
-                {item.icon}
+            <AnimatedSection key={index} delay={index * 150} className="edge-grid-item">
+              <div className="edge-card">
+                <div className="edge-icon-wrapper">
+                  {item.icon}
+                </div>
+                <h3 className="edge-title">{item.title}</h3>
+                <p className="edge-description">{item.description}</p>
               </div>
-              <h3 className="edge-title">{item.title}</h3>
-              <p className="edge-description">{item.description}</p>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>
